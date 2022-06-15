@@ -27,6 +27,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
+Naming/PredicateName:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
