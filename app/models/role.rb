@@ -1,4 +1,3 @@
-
 class Role < ApplicationRecord
   has_many :users
 
@@ -9,7 +8,7 @@ class Role < ApplicationRecord
         show: true,
         create: true,
         update: true,
-        delete: true,
+        delete: true
       }
     },
     'admin' => {
@@ -18,17 +17,17 @@ class Role < ApplicationRecord
         show: true,
         create: true,
         update: true,
-        destroy: true,
+        destroy: true
       },
       job: {
         index: true,
         show: true,
         create: true,
         update: true,
-        destroy: true,
+        destroy: true
       }
     }
-  }
+  }.freeze
 
   enum name: {
     user: 0,
@@ -38,7 +37,7 @@ class Role < ApplicationRecord
 
   def has_permission?(action, resource)
     PERMISSIONS.dig(name, resource, action) ||
-    PERMISSIONS.dig(name, :all, action)
+      PERMISSIONS.dig(name, :all, action)
   end
 
   validates :name, presence: true, uniqueness: true

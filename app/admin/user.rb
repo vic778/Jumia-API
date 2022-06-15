@@ -8,6 +8,6 @@ ActiveAdmin.register User do
   #
   # or
   #
-  
+
   # end
 end
