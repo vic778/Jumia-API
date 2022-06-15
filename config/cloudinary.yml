@@ -1,0 +1,17 @@
+development:
+  cloud_name: "name"
+  api_key: "api_key"
+  api_secret: "api_sec"
+  secure: true
+
+  production:
+    cloud_name: "name"
+    api_key: "api_key"
+    api_secret: "api_sec"
+    secure: true
+  
+  test:
+    cloud_name: "name"
+    api_key: "api_key"
+    api_secret: "api_sec"
+    secure: true
