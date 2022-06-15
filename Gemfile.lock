@@ -447,6 +447,7 @@ DEPENDENCIES
   shrine-cloudinary (~> 1.1, >= 1.1.1)
   sprockets-rails
   stimulus-rails
+  thor
   turbo-rails
   tzinfo-data
   web-console
