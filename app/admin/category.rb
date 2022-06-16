@@ -4,7 +4,7 @@ ActiveAdmin.register Category do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :user_id, :sub_categories_attributes => [:id, :name, :_destroy]
+  permit_params :name, :user_id, sub_categories_attributes: %i[id name _destroy]
   #
   # or
   #

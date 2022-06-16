@@ -3,10 +3,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   after_initialize :set_default_role
-  
+
   belongs_to :role
   has_many :categories
-  
 
   validates :name, presence: true
 
