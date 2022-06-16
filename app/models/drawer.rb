@@ -3,5 +3,4 @@ class Drawer < ApplicationRecord
   has_many :posts, inverse_of: :drawer, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { scope: :sub_category_id }
-
 end
