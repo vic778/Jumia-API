@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_101342) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_16_105804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_101342) do
     t.index ["sub_category_id"], name: "index_drawers_on_sub_category_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "model"
+    t.float "price"
+    t.string "connexion"
+    t.string "cpu"
+    t.string "gpu"
+    t.string "system"
+    t.string "battery"
+    t.string "camera"
+    t.string "memory"
+    t.string "display"
+    t.string "card_sim"
+    t.string "image"
+    t.bigint "drawer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drawer_id"], name: "index_posts_on_drawer_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "name", default: 0, null: false
     t.datetime "created_at", null: false
@@ -97,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_101342) do
 
   add_foreign_key "categories", "users"
   add_foreign_key "drawers", "sub_categories"
+  add_foreign_key "posts", "drawers"
   add_foreign_key "sub_categories", "categories"
   add_foreign_key "users", "roles"
 end
