@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_15_192702) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_16_101342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,11 +40,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_192702) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "drawers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "sub_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sub_category_id"], name: "index_drawers_on_sub_category_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "name", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_sub_categories_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,5 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_192702) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "categories", "users"
+  add_foreign_key "drawers", "sub_categories"
+  add_foreign_key "sub_categories", "categories"
   add_foreign_key "users", "roles"
 end
