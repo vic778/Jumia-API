@@ -13,5 +13,5 @@ class Post < ApplicationRecord
   validates :camera, presence: true
   validates :memory, presence: true
   validates :display, presence: true
-  validates :image, presence: true
+  # validates :image, presence: true
 end
