@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_17_091224) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_17_094249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_17_091224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sub_category_id"], name: "index_drawers_on_sub_category_id"
+  end
+
+  create_table "key_features", force: :cascade do |t|
+    t.string "line"
+    t.string "line1"
+    t.string "line2"
+    t.string "line3"
+    t.string "line4"
+    t.string "line5"
+    t.string "line6"
+    t.string "line7"
+    t.string "line8"
+    t.bigint "specification_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_key_features_on_post_id"
+    t.index ["specification_id"], name: "index_key_features_on_specification_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -145,6 +163,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_17_091224) do
   add_foreign_key "boxes", "specifications"
   add_foreign_key "categories", "users"
   add_foreign_key "drawers", "sub_categories"
+  add_foreign_key "key_features", "posts"
+  add_foreign_key "key_features", "specifications"
   add_foreign_key "posts", "drawers"
   add_foreign_key "specifications", "posts"
   add_foreign_key "sub_categories", "categories"
