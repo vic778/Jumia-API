@@ -167,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_17_094249) do
   add_foreign_key "key_features", "specifications"
   add_foreign_key "posts", "drawers"
   add_foreign_key "specifications", "posts"
+  add_foreign_key "posts", "drawers"
   add_foreign_key "sub_categories", "categories"
   add_foreign_key "users", "roles"
 end
