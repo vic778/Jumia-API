@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_105804) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_17_091224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_105804) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "boxes", force: :cascade do |t|
+    t.string "line"
+    t.string "line1"
+    t.string "line2"
+    t.string "line3"
+    t.string "line4"
+    t.string "line5"
+    t.string "line6"
+    t.string "line7"
+    t.string "line8"
+    t.bigint "specification_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_boxes_on_post_id"
+    t.index ["specification_id"], name: "index_boxes_on_specification_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -84,6 +102,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_105804) do
     t.index ["name"], name: "index_roles_on_name"
   end
 
+  create_table "specifications", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_specifications_on_post_id"
+  end
+
   create_table "sub_categories", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id", null: false
@@ -116,9 +141,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_105804) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "boxes", "posts"
+  add_foreign_key "boxes", "specifications"
   add_foreign_key "categories", "users"
   add_foreign_key "drawers", "sub_categories"
   add_foreign_key "posts", "drawers"
+  add_foreign_key "specifications", "posts"
   add_foreign_key "sub_categories", "categories"
   add_foreign_key "users", "roles"
 end
