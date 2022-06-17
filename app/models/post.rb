@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :drawer
+  has_many :specifications, inverse_of: :post, dependent: :destroy
+  has_many :boxs
 
   validates :title, presence: true
   validates :description, presence: true
