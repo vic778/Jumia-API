@@ -1,5 +1,4 @@
 class CategoryPolicy < ApplicationPolicy
-
   def index?
     user.has_permission?(:index, :company)
   end
@@ -29,6 +28,5 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-   
   end
 end

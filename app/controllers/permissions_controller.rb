@@ -33,9 +33,9 @@ class PermissionsController < ApplicationController
 
   def user_not_authorized
     if current_user.role.name == "user"
-        render json: {error: "You are not authorized to perform this action"}, status: :unauthorized
+      render json: { error: "You are not authorized to perform this action" }, status: :unauthorized
     else
-        action = params[:action]
+      action = params[:action]
     end
   end
 end
