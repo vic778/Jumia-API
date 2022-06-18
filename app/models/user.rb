@@ -13,8 +13,8 @@ class User < ApplicationRecord
     role.name == 'admin'
   end
 
-  def super_admin?
-    role.name == 'super_admin'
+  def superadmin?
+    role.name == 'superadmin'
   end
 
   def has_permission?(action, resource)
