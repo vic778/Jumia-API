@@ -12,7 +12,7 @@ class Role < ApplicationRecord
       }
     },
     'admin' => {
-      company: {
+      category: {
         index: true,
         show: true,
         create: true,

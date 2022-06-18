@@ -32,6 +32,7 @@ gem 'devise'
 gem "jbuilder"
 gem 'jwt'
 gem 'omniauth-google-oauth2'
+gem "pundit"
 gem 'rack-cors'
 gem 'thor'
 

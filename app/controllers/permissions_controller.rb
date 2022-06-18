@@ -24,10 +24,18 @@ class PermissionsController < ApplicationController
   def current_user
     @current_user ||= super || User.find(@current_user_id)
   rescue StandardError
-    head :unauthorized
+    # head :unauthorized
   end
 
   def signed_in?
     @current_user_id.present?
+  end
+
+  def user_not_authorized
+    if current_user.role.name == "user"
+      render json: { error: "You are not authorized to perform this action" }, status: :unauthorized
+    else
+      action = params[:action]
+    end
   end
 end
