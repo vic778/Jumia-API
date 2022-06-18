@@ -7,7 +7,7 @@
   - Admin Model
   - Category Model
   - Sub_category Model
-  - Drawer Category
+  - Drawer Model
   - Post Model
   - Box Model
   - Specifications Model

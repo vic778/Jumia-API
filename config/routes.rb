@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     get 'user/auto_login', to: 'users#auto_login'
     get 'users', to: 'users#index'
 
-    resources :categories
+    resources :categories do
+      resources :sub_categories
+    end
    
   end
 end
