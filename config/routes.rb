@@ -9,7 +9,20 @@ Rails.application.routes.draw do
     get 'users', to: 'users#index'
 
     resources :categories do
-      resources :sub_categories
+      resources :sub_categories do
+        resources :drawers do
+          resources :posts
+        end
+      end
+    end
+
+    resources :posts do
+      resources :specifications 
+    end
+
+    resources :posts do
+      resources :boxes
+      resources :key_features
     end
    
   end
