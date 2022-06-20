@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :specifications, inverse_of: :post, dependent: :destroy
   has_many :boxs
   has_many :key_features
+  has_many :cart
 
   validates :title, presence: true
   validates :description, presence: true

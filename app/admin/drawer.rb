@@ -4,7 +4,7 @@ ActiveAdmin.register Drawer do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :sub_category_id
+  permit_params :name, :sub_category_id, :category_id
   #
   # or
   #

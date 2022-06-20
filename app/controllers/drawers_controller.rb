@@ -54,6 +54,6 @@ class DrawersController < PermissionsController
   end
 
   def drawer_params
-    params.require(:drawer).permit(:name, :description, :sub_category_id)
+    params.require(:drawer).permit(:name, :description, :sub_category_id, :category_id)
   end
 end

@@ -5,11 +5,7 @@ class CategoriesController < PermissionsController
 
   def index
     @categories = Category.all
-    if @categories
-      render json: { success: true, data: @categories }, status: :ok
-    else
-      render json: { success: false, data: "[]" }
-    end
+    render json: @categories
   end
 
   def show
