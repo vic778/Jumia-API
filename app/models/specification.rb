@@ -1,5 +1,5 @@
 class Specification < ApplicationRecord
   belongs_to :post
-  has_many :boxs
-  has_many :key_features
+  has_one :box
+  has_one :key_feature
 end
