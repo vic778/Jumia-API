@@ -2,9 +2,7 @@ module NullAttributesRemover
   def attributes
     hash = super
     hash.each do |key, value|
-      if value.nil?
-        hash.delete(key)
-      end
+      hash.delete(key) if value.nil?
     end
     hash
   end
