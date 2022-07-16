@@ -89,8 +89,9 @@ FactoryBot.define do
     line6 { "MyString" }
     line7 { "MyString" }
     line8 { "MyString" }
-    specification { nil }
-    post { nil }
+
+    association :specification, factory: :specification
+    association :post, factory: :post
   end
 
   factory :cart do
