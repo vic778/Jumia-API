@@ -25,9 +25,9 @@ FactoryBot.define do
     association :user, factory: :user
 
     trait :sub_category do
-      before(:create) do |category|
-        FactoryBot.create(:sub_category, category: category)
-      end
+        before(:create) do |category|
+          FactoryBot.create(:sub_category, category: category)
+        end
       end
   end
 
@@ -40,7 +40,7 @@ FactoryBot.define do
   factory :drawer do
     name { Faker::Lorem.word }
     association :sub_category, factory: :sub_category
-    association :user, factory: :user
+    association :category, factory: :category
   end
 
   factory :post do
