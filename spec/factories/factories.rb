@@ -8,10 +8,10 @@ FactoryBot.define do
   end
 
   factory :user do
+    name { Faker::Name.name }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     password_confirmation { password }
-    first_name { Faker::Name.first_name }
 
     association :role, factory: :role, name: 'user'
 
