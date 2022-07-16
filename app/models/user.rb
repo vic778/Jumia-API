@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :categories
 
   validates :name, presence: true
+  validates :password_confirmation, presence: true
 
   def admin?
     role.name == 'admin'
