@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  it {should belong_to(:user)}
-  it {is_expected.to validate_presence_of(:name)}
-
+  it { should belong_to(:user) }
+  it { is_expected.to validate_presence_of(:name) }
 
   describe 'factory validates' do
     it 'should validate factory' do
