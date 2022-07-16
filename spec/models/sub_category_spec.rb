@@ -4,7 +4,6 @@ RSpec.describe SubCategory, type: :model do
   it { should belong_to(:category) }
   it { is_expected.to validate_presence_of(:name) }
 
-
   describe 'factory validates' do
     it 'should validate factory' do
       @category = FactoryBot.create(:category)
@@ -20,5 +19,4 @@ RSpec.describe SubCategory, type: :model do
       expect(@sub_category).to be_valid
     end
   end
-
 end
