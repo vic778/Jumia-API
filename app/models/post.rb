@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   validates :connexion, presence: true
   validates :cpu, presence: true
   validates :gpu, presence: true
-  validates :system, presence: true
+  # validates :system, presence: true
   validates :battery, presence: true
   validates :camera, presence: true
   validates :memory, presence: true
