@@ -1,21 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it { should belong_to(:drawer)}
-  it {is_expected.to validate_presence_of(:title)}
-  it {is_expected.to validate_presence_of(:description)}
-  it {is_expected.to validate_presence_of(:model)}
-  it {is_expected.to validate_presence_of(:price)}
-  it {is_expected.to validate_presence_of(:connexion)}
-  it {is_expected.to validate_presence_of(:cpu)}
-  it {is_expected.to validate_presence_of(:gpu)}
+  it { should belong_to(:drawer) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:description) }
+  it { is_expected.to validate_presence_of(:model) }
+  it { is_expected.to validate_presence_of(:price) }
+  it { is_expected.to validate_presence_of(:connexion) }
+  it { is_expected.to validate_presence_of(:cpu) }
+  it { is_expected.to validate_presence_of(:gpu) }
   # it {is_expected.to validate_presence_of(:system)}
-  it {is_expected.to validate_presence_of(:battery)}
-  it {is_expected.to validate_presence_of(:camera)}
-  it {is_expected.to validate_presence_of(:memory)}
-  it {is_expected.to validate_presence_of(:display)}
+  it { is_expected.to validate_presence_of(:battery) }
+  it { is_expected.to validate_presence_of(:camera) }
+  it { is_expected.to validate_presence_of(:memory) }
+  it { is_expected.to validate_presence_of(:display) }
   # it {is_expected.to validate_presence_of(:image)}
-
 
   describe 'factory validates' do
     it 'should validate factory' do
@@ -74,7 +73,5 @@ RSpec.describe Post, type: :model do
       @post = FactoryBot.build(:post, display: nil)
       expect(@post).to_not be_valid
     end
-
   end
-    
 end
