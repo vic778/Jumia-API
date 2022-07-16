@@ -61,8 +61,7 @@ FactoryBot.define do
   end
 
   factory :specification do
-    name { "MyString" }
-    post { nil }
+    association :post, factory: :post
   end
 
   factory :box do
@@ -75,8 +74,9 @@ FactoryBot.define do
     line6 { "MyString" }
     line7 { "MyString" }
     line8 { "MyString" }
-    specification { nil }
-    post { nil }
+
+    association :specification, factory: :specification
+    association :post, factory: :post
   end
 
   factory :key_feature do
