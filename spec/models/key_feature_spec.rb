@@ -4,7 +4,6 @@ RSpec.describe KeyFeature, type: :model do
   it { should belong_to(:specification) }
   it { should belong_to(:post) }
 
-
   describe 'factory validates' do
     it 'should validate factory' do
       @drawer = FactoryBot.create(:drawer)
@@ -14,5 +13,4 @@ RSpec.describe KeyFeature, type: :model do
       expect(@key_feature).to be_valid
     end
   end
-
 end
