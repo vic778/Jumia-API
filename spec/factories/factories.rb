@@ -95,12 +95,12 @@ FactoryBot.define do
   end
 
   factory :cart do
-    user { nil }
+    association :user, factory: :user
   end
 
   factory :line_item do
-    cart { nil }
-    post { nil }
-    user { nil }
+    association :cart, factory: :cart
+    association :post, factory: :post
+    association :user, factory: :user
   end
 end
