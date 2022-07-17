@@ -13,7 +13,7 @@ RSpec.describe "Specifications", type: :request do
 
     describe "GET /specifications" do
       it "returns a list of specifications" do
-        get '/api/posts/' + post.id.to_s + '/specifications'
+        get "/api/posts/#{post.id}/specifications"
         expect(response).to have_http_status(200)
       end
     end
