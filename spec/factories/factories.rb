@@ -29,11 +29,23 @@ FactoryBot.define do
         FactoryBot.create(:sub_category, category: category)
       end
     end
+
+    trait :drawer do
+      before(:create) do |category|
+        FactoryBot.create(:drawer, category: category)
+      end
+    end
   end
 
   factory :sub_category do
     name { Faker::Lorem.word }
     association :category, factory: :category
+
+    trait :drawer do
+      before(:create) do |sub_category|
+        FactoryBot.create(:drawer, sub_category: sub_category)
+      end
+    end
   end
 
   factory :drawer do
@@ -57,7 +69,8 @@ FactoryBot.define do
     display { "MyString" }
     card_sim { "MyString" }
     image { "MyString" }
-    drawer { nil }
+
+    association :drawer, factory: :drawer
   end
 
   factory :specification do
