@@ -11,7 +11,6 @@ RSpec.describe "Categories", type: :request do
       end
     end
 
-
     describe "GET /categories" do
       it "returns a list of categories" do
         get categories_path
@@ -46,7 +45,5 @@ RSpec.describe "Categories", type: :request do
         expect(response).to have_http_status(200)
       end
     end
-    
   end
-  
 end
