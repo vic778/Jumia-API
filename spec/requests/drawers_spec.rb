@@ -5,7 +5,7 @@ RSpec.describe "Drawers", type: :request do
     let!(:user) { create(:user, :admin) }
     let!(:sub_category) { create(:sub_category) }
     let!(:category) { create(:category) }
-    let!(:drawer) { create(:drawer, category: category,sub_category: sub_category) }
+    let!(:drawer) { create(:drawer, category: category, sub_category: sub_category) }
 
     describe 'It validates Factory' do
       it 'should validate Factory' do
