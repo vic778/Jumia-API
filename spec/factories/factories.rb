@@ -69,7 +69,8 @@ FactoryBot.define do
     display { "MyString" }
     card_sim { "MyString" }
     image { "MyString" }
-    drawer { nil }
+    
+    association :drawer, factory: :drawer
   end
 
   factory :specification do
