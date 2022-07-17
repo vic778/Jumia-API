@@ -28,13 +28,5 @@ RSpec.describe "Sessions", type: :request do
         expect(response).to have_http_status(200)
       end
     end
-
-    # context "when request is invalid" do
-    #   before { post "/api/users/login", params: invalid_credentials, headers: headers }
-
-    #   it "returns a 422 status code" do
-    #     expect(response).to have_http_status(422)
-    #   end
-    # end
   end
 end
