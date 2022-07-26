@@ -3,9 +3,26 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
  scope :api, defaults: { format: :json } do
       devise_for :users, controllers: { sessions: :sessions }, path_names: { sign_in: :login }
-
     resource :user, only: [:update]
     get 'user/auto_login', to: 'users#auto_login'
     get 'users', to: 'users#index'
+
+    resources :categories do
+      resources :sub_categories do
+        resources :drawers do
+          resources :posts
+        end
+      end
+    end
+
+    resources :posts do
+      resources :specifications 
+    end
+
+    resources :posts do
+      resources :boxes
+      resources :key_features
+    end
+   
   end
 end

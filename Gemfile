@@ -26,12 +26,13 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'activeadmin'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'carrierwave'
 gem 'devise'
 gem "jbuilder"
 gem 'jwt'
 gem 'omniauth-google-oauth2'
+gem "pundit"
 gem 'rack-cors'
 gem 'thor'
 
@@ -66,6 +67,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'shoulda-matchers'
 end
 
 group :development do
