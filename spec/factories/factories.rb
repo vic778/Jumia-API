@@ -108,12 +108,12 @@ FactoryBot.define do
   end
 
   factory :cart do
-    association :user, factory: :user
+    id { 1 }
+    # association :user, factory: :user
   end
 
   factory :line_item do
     association :cart, factory: :cart
     association :post, factory: :post
-    association :user, factory: :user
   end
 end
