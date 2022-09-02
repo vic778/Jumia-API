@@ -25,6 +25,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+# Additional gems
 gem 'activeadmin'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'carrierwave'
@@ -34,6 +35,9 @@ gem 'jwt'
 gem 'omniauth-google-oauth2'
 gem "pundit"
 gem 'rack-cors'
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'thor'
 
 # Use Redis adapter to run Action Cable in production
