@@ -22,10 +22,11 @@ RSpec.describe 'api/sub_categories', type: :request do
     end
   end
 
-  path '/api/categories/1/sub_categories/1' do
+  path '/api/categories/1/sub_categories/{id}' do
     get 'Retrieves a sub_category' do
       tags 'SubCategories'
       produces 'application/json'
+      parameter name: :id, in: :path, type: :string
       response '200', 'sub_category found' do
         schema type: :object,
                properties: {
