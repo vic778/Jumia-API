@@ -104,6 +104,189 @@ paths:
                     type: string
                   updated_at:
                     type: string
+  "/api/posts":
+    get:
+      summary: Retrieves all posts
+      tags:
+      - Posts
+      responses:
+        '200':
+          description: posts found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    content:
+                      type: string
+                    image:
+                      type: string
+                    drawer_id:
+                      type: integer
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    user_id:
+                      type: integer
+                    slug:
+                      type: string
+                    category_id:
+                      type: integer
+                    sub_category_id:
+                      type: integer
+                    user:
+                      type: object
+                    comments:
+                      type: array
+                    boxes:
+                      type: array
+                    key_features:
+                      type: array
+                    specifications:
+                      type: array
+                    drawer:
+                      type: object
+                    category:
+                      type: object
+                    sub_category:
+                      type: object
+                  required:
+                  - id
+                  - title
+                  - content
+                  - image
+                  - drawer_id
+                  - created_at
+                  - updated_at
+                  - user_id
+                  - slug
+                  - category_id
+                  - sub_category_id
+                  - user
+                  - comments
+                  - boxes
+                  - key_features
+                  - specifications
+                  - drawer
+                  - category
+                  - sub_category
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                required:
+                - errors
+  "/api/posts/{id}":
+    get:
+      summary: Retrieves a post
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: post found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  content:
+                    type: string
+                  image:
+                    type: string
+                  drawer_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  slug:
+                    type: string
+                  category_id:
+                    type: integer
+                  sub_category_id:
+                    type: integer
+                  user:
+                    type: object
+                  comments:
+                    type: array
+                  boxes:
+                    type: array
+                  key_features:
+                    type: array
+                  specifications:
+                    type: array
+                  drawer:
+                    type: object
+                  category:
+                    type: object
+                  sub_category:
+                    type: object
+                required:
+                - id
+                - title
+                - content
+                - image
+                - drawer_id
+                - created_at
+                - updated_at
+                - user_id
+                - slug
+                - category_id
+                - sub_category_id
+                - user
+                - comments
+                - boxes
+                - key_features
+                - specifications
+                - drawer
+                - category
+                - sub_category
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                required:
+                - errors
+        '404':
+          description: post not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                required:
+                - errors
   "/api/categories/1/sub_categories":
     post:
       summary: Creates a sub_category
