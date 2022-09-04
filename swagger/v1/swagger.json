@@ -1,0 +1,111 @@
+---
+openapi: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/v1/events":
+    post:
+      summary: Creates an event
+      tags:
+      - Events
+      consumes:
+      - application/json
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+      - name: category
+        in: body
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            date:
+              type: string
+            time:
+              type: string
+          required:
+          - name
+          - description
+          - date
+          - time
+      responses:
+        '201':
+          description: created
+  "/api/categories/":
+    get:
+      summary: Retrieves all categories
+      tags:
+      - Categories
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        '200':
+          description: categories found
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+        '404':
+          description: categories not found
+  "/api/categories/{id}":
+    get:
+      summary: Retrieves a category
+      tags:
+      - Categories
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        '200':
+          description: category found
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+            required:
+            - id
+            - name
+        '404':
+          description: category not found
+        '406':
+          description: unsupported accept header
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      in: header
+      name: Authorization
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization:
+        Bearer {token}"'
