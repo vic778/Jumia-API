@@ -79,4 +79,54 @@ RSpec.describe 'api/categories', type: :request do
       end
     end
   end
+
+  path '/api/categories/{id}' do
+    put 'Updates a category' do
+      tags 'Categories'
+      consumes 'application/json', 'application/xml'
+      security [bearerAuth: []]
+      parameter name: :id, in: :path, type: :string
+      parameter name: :category, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string }
+        },
+        required: ['name']
+      }
+
+      response '204', 'category updated' do
+        let(:id) { Category.create(name: 'FOOD').id }
+        let(:category) { { name: 'DRINK' } }
+        run_test!
+      end
+
+      response '404', 'category not found' do
+        let(:id) { 'invalid' }
+        let(:category) { { name: 'DRINK' } }
+        run_test!
+      end
+
+      response '422', 'invalid request' do
+        let(:id) { Category.create(name: 'FOOD').id }
+        let(:category) { { name: 'food' } }
+        run_test!
+      end
+    end
+
+    delete 'Deletes a category' do
+      tags 'Categories'
+      security [bearerAuth: []]
+      parameter name: :id, in: :path, type: :string
+
+      response '204', 'category deleted' do
+        let(:id) { Category.create(name: 'FOOD').id }
+        run_test!
+      end
+
+      response '404', 'category not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 end
