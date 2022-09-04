@@ -4,38 +4,9 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/categories":
-    post:
-      summary: Creates a category
-      tags:
-      - Categories
-      parameters: []
-      responses:
-        '201':
-          description: category created
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
-          application/xml:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
   "/api/categories/":
     get:
-      summary: Retrieves all categories
+      summary: Retrieves categories
       tags:
       - Categories
       responses:
@@ -52,10 +23,9 @@ paths:
                       type: integer
                     name:
                       type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
+                  required:
+                  - id
+                  - name
             application/xml:
               schema:
                 type: array
@@ -66,12 +36,9 @@ paths:
                       type: integer
                     name:
                       type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-        '404':
-          description: categories not found
+                  required:
+                  - id
+                  - name
   "/api/categories/{id}":
     get:
       summary: Retrieves a category
@@ -113,8 +80,48 @@ paths:
           description: category not found
         '406':
           description: unsupported accept header
+  "/api/categories":
+    post:
+      summary: Creates a category
+      tags:
+      - Categories
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: category created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      name: Authorization
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization:
+        Bearer {token}"'
