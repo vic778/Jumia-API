@@ -165,6 +165,56 @@ paths:
                   type: string
               required:
               - name
+  "/api/categories/1/sub_categories/1/drawers":
+    get:
+      summary: Retrieves all drawers
+      tags:
+      - Drawers
+      responses:
+        '200':
+          description: drawers found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+  "/api/categories/1/sub_categories/1/drawers/{id}":
+    get:
+      summary: Retrieves a drawer
+      tags:
+      - Drawers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: drawer found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
   "/api/categories/1/sub_categories":
     get:
       summary: Retrieves all sub_categories
@@ -215,11 +265,17 @@ paths:
               required:
               - name
               - category_id
-  "/api/categories/1/sub_categories/1":
+  "/api/categories/1/sub_categories/{id}":
     get:
       summary: Retrieves a sub_category
       tags:
       - SubCategories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: sub_category found
@@ -238,6 +294,7 @@ paths:
                     type: string
                   updated_at:
                     type: string
+  "/api/categories/1/sub_categories/1":
     put:
       summary: Updates a sub_category
       tags:
