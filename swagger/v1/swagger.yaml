@@ -453,10 +453,10 @@ paths:
                   updated_at:
                     type: string
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: localhost:3000
+      default: jummia.herokuapp.com
 components:
   securitySchemes:
     bearerAuth:
