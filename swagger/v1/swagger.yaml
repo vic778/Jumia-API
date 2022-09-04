@@ -80,6 +80,60 @@ paths:
           description: category not found
         '406':
           description: unsupported accept header
+    put:
+      summary: Updates a category
+      tags:
+      - Categories
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: category updated
+        '404':
+          description: category not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+    delete:
+      summary: Deletes a category
+      tags:
+      - Categories
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: category deleted
+        '404':
+          description: category not found
   "/api/categories":
     post:
       summary: Creates a category
@@ -111,6 +165,113 @@ paths:
                   type: string
               required:
               - name
+  "/api/categories/1/sub_categories":
+    get:
+      summary: Retrieves all sub_categories
+      tags:
+      - SubCategories
+      responses:
+        '200':
+          description: sub_categories found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    category_id:
+                      type: integer
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+    post:
+      summary: Creates a sub_category
+      tags:
+      - SubCategories
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '201':
+          description: sub_category created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                category_id:
+                  type: integer
+              required:
+              - name
+              - category_id
+  "/api/categories/1/sub_categories/1":
+    get:
+      summary: Retrieves a sub_category
+      tags:
+      - SubCategories
+      responses:
+        '200':
+          description: sub_category found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  category_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+    put:
+      summary: Updates a sub_category
+      tags:
+      - SubCategories
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '204':
+          description: sub_category updated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                category_id:
+                  type: integer
+              required:
+              - name
+              - category_id
+    delete:
+      summary: Deletes a sub_category
+      tags:
+      - SubCategories
+      security:
+      - Bearer: {}
+      responses:
+        '204':
+          description: sub_category deleted
 servers:
 - url: http://{defaultHost}
   variables:
