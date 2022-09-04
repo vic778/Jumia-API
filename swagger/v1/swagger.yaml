@@ -4,9 +4,9 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/categories/":
+  "/api/categories":
     get:
-      summary: Retrieves categories
+      summary: Retrieves all categories
       tags:
       - Categories
       responses:
@@ -23,22 +23,10 @@ paths:
                       type: integer
                     name:
                       type: string
-                  required:
-                  - id
-                  - name
-            application/xml:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
+                    created_at:
                       type: string
-                  required:
-                  - id
-                  - name
+                    updated_at:
+                      type: string
   "/api/categories/{id}":
     get:
       summary: Retrieves a category
@@ -62,109 +50,10 @@ paths:
                     type: integer
                   name:
                     type: string
-                required:
-                - id
-                - name
-            application/xml:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
+                  created_at:
                     type: string
-                required:
-                - id
-                - name
-        '404':
-          description: category not found
-        '406':
-          description: unsupported accept header
-    put:
-      summary: Updates a category
-      tags:
-      - Categories
-      security:
-      - bearerAuth: []
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: category updated
-        '404':
-          description: category not found
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
-          application/xml:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
-    delete:
-      summary: Deletes a category
-      tags:
-      - Categories
-      security:
-      - bearerAuth: []
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: category deleted
-        '404':
-          description: category not found
-  "/api/categories":
-    post:
-      summary: Creates a category
-      tags:
-      - Categories
-      security:
-      - bearerAuth: []
-      parameters: []
-      responses:
-        '201':
-          description: category created
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
-          application/xml:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-              - name
+                  updated_at:
+                    type: string
   "/api/categories/1/sub_categories/1/drawers":
     get:
       summary: Retrieves all drawers
@@ -216,30 +105,6 @@ paths:
                   updated_at:
                     type: string
   "/api/categories/1/sub_categories":
-    get:
-      summary: Retrieves all sub_categories
-      tags:
-      - SubCategories
-      responses:
-        '200':
-          description: sub_categories found
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    category_id:
-                      type: integer
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
     post:
       summary: Creates a sub_category
       tags:
@@ -265,35 +130,30 @@ paths:
               required:
               - name
               - category_id
-  "/api/categories/1/sub_categories/{id}":
     get:
-      summary: Retrieves a sub_category
+      summary: Retrieves all sub_categories
       tags:
       - SubCategories
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
       responses:
         '200':
-          description: sub_category found
+          description: sub_categories found
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  category_id:
-                    type: integer
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    category_id:
+                      type: integer
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
   "/api/categories/1/sub_categories/1":
     put:
       summary: Updates a sub_category
@@ -329,6 +189,35 @@ paths:
       responses:
         '204':
           description: sub_category deleted
+  "/api/categories/1/sub_categories/{id}":
+    get:
+      summary: Retrieves a sub_category
+      tags:
+      - SubCategories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sub_category found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  category_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
 servers:
 - url: http://{defaultHost}
   variables:
