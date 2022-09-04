@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -24,14 +22,25 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'localhost:3000'
             }
           }
         }
-      ]
+      ],
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: :http,
+            scheme: :bearer,
+            bearerFormat: :JWT,
+            name: :Authorization,
+            description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+          }
+        }
+      }
     }
   }
 
