@@ -35,6 +35,7 @@ gem 'jwt'
 gem 'omniauth-google-oauth2'
 gem "pundit"
 gem 'rack-cors'
+gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
 gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
@@ -69,7 +70,6 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   gem 'rubocop'
   gem 'shoulda-matchers'
 end
