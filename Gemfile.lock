@@ -254,7 +254,7 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-google-oauth2 (1.1.0)
+    omniauth-google-oauth2 (1.1.1)
       jwt (>= 2.0)
       oauth2 (~> 2.0.6)
       omniauth (~> 2.0)
@@ -464,7 +464,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit
   rack-cors
-  rails (~> 7.0.3)
+  rails (~> 7.0.3, >= 7.0.3.1)
   rspec-rails (~> 5.1, >= 5.1.2)
   rswag
   rswag-api

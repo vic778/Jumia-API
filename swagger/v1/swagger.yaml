@@ -3,8 +3,39 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 paths:
   "/api/categories":
+    post:
+      summary: Creates a category
+      tags:
+      - Categories
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '201':
+          description: category created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - category
     get:
       summary: Retrieves all categories
       tags:
@@ -28,6 +59,51 @@ paths:
                     updated_at:
                       type: string
   "/api/categories/{id}":
+    put:
+      summary: Updates a category
+      tags:
+      - Categories
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: category updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - category
+    delete:
+      summary: Deletes a category
+      tags:
+      - Categories
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: category deleted
     get:
       summary: Retrieves a category
       tags:
@@ -344,7 +420,7 @@ paths:
       tags:
       - SubCategories
       security:
-      - Bearer: {}
+      - bearer_auth: []
       parameters: []
       responses:
         '201':
@@ -394,7 +470,7 @@ paths:
       tags:
       - SubCategories
       security:
-      - Bearer: {}
+      - bearer_auth: []
       parameters: []
       responses:
         '204':
@@ -419,7 +495,7 @@ paths:
       tags:
       - SubCategories
       security:
-      - Bearer: {}
+      - bearer_auth: []
       responses:
         '204':
           description: sub_category deleted
@@ -452,17 +528,72 @@ paths:
                     type: string
                   updated_at:
                     type: string
+  "/api/users":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - username
+                  - email
+                  - password
+                  - password_confirmation
+              required:
+              - user
+  "/api/users/login":
+    post:
+      summary: Logs in a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: user logged in
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+              required:
+              - user
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
       default: jummia.herokuapp.com
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      name: Authorization
-      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization:
-        Bearer {token}"'

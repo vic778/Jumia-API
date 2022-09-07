@@ -18,7 +18,7 @@
 
 
 ### Deployment
-[Heroku]()
+![img](app/assets/images/screen.png)
 ## Built With
 
 - Rails
@@ -56,7 +56,7 @@ start the local server by running `rails s`
 
 ### Testing
 
-run the tests by typing `bundle exec rspec`
+run the tests by typing `rails rswag`
 
 
 ### Documentation
