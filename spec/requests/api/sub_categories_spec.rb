@@ -8,7 +8,7 @@ RSpec.describe 'api/sub_categories', type: :request do
       post 'Creates a sub_category' do
         tags 'SubCategories'
         consumes 'application/json'
-        security [Bearer: {}]
+        security [bearer_auth: []]
         parameter name: :sub_category, in: :body, schema: {
           type: :object,
           properties: {
@@ -32,7 +32,7 @@ RSpec.describe 'api/sub_categories', type: :request do
       put 'Updates a sub_category' do
         tags 'SubCategories'
         consumes 'application/json'
-        security [Bearer: {}]
+        security [bearer_auth: []]
         parameter name: :sub_category, in: :body, schema: {
           type: :object,
           properties: {
@@ -55,7 +55,7 @@ RSpec.describe 'api/sub_categories', type: :request do
     path '/api/categories/1/sub_categories/1' do
       delete 'Deletes a sub_category' do
         tags 'SubCategories'
-        security [Bearer: {}]
+        security [bearer_auth: []]
         response '204', 'sub_category deleted' do
           run_test!
         end
