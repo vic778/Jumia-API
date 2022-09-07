@@ -19,6 +19,15 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+			components: {
+        securitySchemes: {
+          bearer_auth: {
+            type: :http,
+            scheme: :bearer,
+            bearerFormat: JWT
+          }
+        }
+      },
       paths: {},
       servers: [
         {
@@ -29,18 +38,7 @@ RSpec.configure do |config|
             }
           }
         }
-      ],
-      components: {
-        securitySchemes: {
-          bearerAuth: {
-            type: :http,
-            scheme: :bearer,
-            bearerFormat: :JWT,
-            name: :Authorization,
-            description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
-          }
-        }
-      }
+      ]
     }
   }
 
