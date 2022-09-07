@@ -596,4 +596,4 @@ servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: https://jummia.herokuapp.com/
+      default: jummia.herokuapp.com
