@@ -19,7 +19,7 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
-			components: {
+      components: {
         securitySchemes: {
           bearer_auth: {
             type: :http,

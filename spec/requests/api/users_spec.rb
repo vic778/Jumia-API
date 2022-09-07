@@ -63,6 +63,5 @@ RSpec.describe 'api/users', type: :request do
         end
       end
     end
-
   end
 end

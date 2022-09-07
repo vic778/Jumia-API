@@ -84,7 +84,7 @@ RSpec.describe 'api/categories', type: :request do
         end
       end
     end
-  
+
     path '/api/categories/{id}' do
       get 'Retrieves a category' do
         tags 'Categories'
