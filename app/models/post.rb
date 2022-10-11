@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: [:slugged, :finders, :history]
   
   belongs_to :drawer
   has_many :specifications, inverse_of: :post, dependent: :destroy
