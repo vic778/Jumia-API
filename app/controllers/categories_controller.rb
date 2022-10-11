@@ -9,7 +9,8 @@ class CategoriesController < PermissionsController
   end
 
   def show
-    @category = Category.find_by(id: params[:id])
+    @category = Category.friendly.find(params[:id])
+    # @category = Category.find_by(id: params[:id])
     if @category
       render json: { status: 200, data: @category }
     else
@@ -46,7 +47,8 @@ class CategoriesController < PermissionsController
   private
 
   def set_category
-    @category = @user.categories.find_by(id: params[:id])
+    # @category = @user.categories.find_by(id: params[:id])
+    @category = @user.categories.friendly.find(params[:id])
   end
 
   def category_params
