@@ -13,8 +13,8 @@ concurrency:
 jobs:
   minitest:
     env:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: MERVIC15071997
+      POSTGRES_USER: jummia_api_test
+      # POSTGRES_PASSWORD: postgres
 
     strategy:
       fail-fast: false
