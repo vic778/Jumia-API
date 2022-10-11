@@ -13,7 +13,7 @@ concurrency:
 jobs:
   minitest:
     env:
-      POSTGRES_USER: postgres
+      # POSTGRES_USER: postgres
       # POSTGRES_PASSWORD: postgres
 
     strategy:
