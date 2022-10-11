@@ -13,7 +13,7 @@ class PostsController < PermissionsController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     if @post
       render json: { status: 200, data: @post }
     else
@@ -22,7 +22,7 @@ class PostsController < PermissionsController
   end
 
   def create
-    @drawer = Drawer.find_by(id: params[:drawer_id])
+    @drawer = Drawer.find(params[:drawer_id])
     @post = @drawer.posts.create(post_params)
     if @post.save
       render json: { success: true, message: "Post created successfully", data: @post }, status: :created
@@ -50,7 +50,7 @@ class PostsController < PermissionsController
   private
 
   def set_post
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
   end
 
   def post_params
