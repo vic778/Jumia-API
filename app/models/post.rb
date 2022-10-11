@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_candidates, use: %i[slugged finders history]
+
   belongs_to :drawer
   has_many :specifications, inverse_of: :post, dependent: :destroy
   has_many :boxs
@@ -18,4 +21,16 @@ class Post < ApplicationRecord
   validates :memory, presence: true
   validates :display, presence: true
   # validates :image, presence: true
+  def slug_candidates
+    [
+      :title,
+      %i[title model]
+      # [:name, :street, :city],
+      # [:name, :street_number, :street, :city]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 end
