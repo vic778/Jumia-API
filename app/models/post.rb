@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders, :history]
-  
+  friendly_id :slug_candidates, use: %i[slugged finders history]
+
   belongs_to :drawer
   has_many :specifications, inverse_of: :post, dependent: :destroy
   has_many :boxs
@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   def slug_candidates
     [
       :title,
-      [:title, :model]
+      %i[title model]
       # [:name, :street, :city],
       # [:name, :street_number, :street, :city]
     ]

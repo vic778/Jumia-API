@@ -1,6 +1,6 @@
 class SubCategory < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :name, use: %i[slugged finders]
   belongs_to :category, inverse_of: :sub_categories
   has_many :drawers
 
