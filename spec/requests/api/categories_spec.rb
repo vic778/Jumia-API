@@ -24,10 +24,22 @@ RSpec.describe 'api/categories', type: :request do
           let(:role) { create(:role, name: 'admin') }
           let(:user) { create(:user, role: role) }
           let(:Authorization) { "Bearer #{user.generate_jwt}" }
-          let(:category) { { category: { name: 'victor' } } }
+          let(:category) { { category: { name: 'Phones' } } }
           run_test! do |response|
             data = JSON.parse(response.body)
-            expect(data['name']) == ('victor')
+            expect(data['name']) == ('Phones')
+          end
+        end
+
+        response '401', 'unauthorized' do
+          let(:role) { create(:role, name: 'user') }
+          let(:user) { create(:user, role: role) }
+          let(:Authorization) { "Bearer #{user.generate_jwt}" }
+          let(:category) { { category: { name: 'Phones' } } }
+          run_test! do |response|
+            data = JSON.parse(response.body)
+            expect(data['name']) == ('Phones')
+            expect(data['message']) == ('You are not authorized to perform this action.')
           end
         end
       end
