@@ -45,30 +45,37 @@ RSpec.describe 'api/categories', type: :request do
       end
     end
 
-    # path '/api/categories/{id}' do
-    #   put 'Updates a category' do
-    #     tags 'Categories'
-    #     security [bearer_auth: []]
-    #     consumes 'application/json'
-    #     parameter name: :id, in: :path, type: :string
-    #     parameter name: :category, in: :body, schema: {
-    #       type: :object,
-    #       properties: {
-    #         category: {
-    #           type: :object,
-    #           properties: {
-    #             name: { type: :string }
-    #           },
-    #           required: %w[name]
-    #         }
-    #       },
-    #       required: ['category']
-    #     }
-    #     response '200', 'category updated' do
-    #       let(:category) { { category: { name: 'victor' } } }
-    #       run_test!
-    #     end
-    #   end
+    path '/api/categories/{id}' do
+      put 'Updates a category' do
+        tags 'Categories'
+        security [bearer_auth: []]
+        consumes 'application/json'
+        # parameter name: :id, in: :path, type: :string
+        parameter name: :category, in: :body, schema: {
+          type: :object,
+          properties: {
+            category: {
+              type: :object,
+              properties: {
+                name: { type: :string }
+              },
+              required: %w[name]
+            }
+          },
+          required: ['category']
+        }
+        response '200', 'category updated' do
+            let(:role) { create(:role, name: 'user') }
+            let(:user) { create(:user, role: role) }
+            let(:Authorization) { "Bearer #{user.generate_jwt}" }
+            let(:category) { { category: { name: 'Phones' } } }
+            run_test! do |response|
+              data = JSON.parse(response.body)
+              expect(data['name']) == ('Phones')
+            end
+        end
+      end
+    end
 
     # #   delete 'Deletes a category' do
     # #     tags 'Categories'
