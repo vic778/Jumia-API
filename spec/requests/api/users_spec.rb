@@ -23,16 +23,16 @@ RSpec.describe 'api/users', type: :request do
       }
 
       response '200', 'user created' do
-      #   let(:role) { create(:role) }
-      #   let!(:user) { { user: { name: 'victor', email: 'b@gmail.com', password: '123456', password_confirmation: '123456' }, role: role  }}
-      #   run_test! do |response|
-      #     data = JSON.parse(response.body)
-      #     expect(data['title']) == ('Registration successful')
-      #     expect(data['message']) == ("Thank you for joining the Jumia platform, please check your email and verify your account!")
-      #     expect(data['name']) == ('victor')
-      #     # expect(data['email']).to eq('barhvictor@gmail.com')
-      #     expect(data['password']) == ('123456')
-      #   end
+        #   let(:role) { create(:role) }
+        #   let!(:user) { { user: { name: 'victor', email: 'b@gmail.com', password: '123456', password_confirmation: '123456' }, role: role  }}
+        #   run_test! do |response|
+        #     data = JSON.parse(response.body)
+        #     expect(data['title']) == ('Registration successful')
+        #     expect(data['message']) == ("Thank you for joining the Jumia platform, please check your email and verify your account!")
+        #     expect(data['name']) == ('victor')
+        #     # expect(data['email']).to eq('barhvictor@gmail.com')
+        #     expect(data['password']) == ('123456')
+        #   end
       end
 
       response '422', 'invalid request' do
