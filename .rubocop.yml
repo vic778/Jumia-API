@@ -16,12 +16,12 @@ Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 30
+  Max: 60
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 50
+  Max: 100
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
@@ -72,6 +72,10 @@ Lint/StructNewOverride:
 Lint/AssignmentInCondition:
   Enabled: false
 Lint/MissingCopEnableDirective:
+  Enabled: false
+Lint/FloatComparison:
+  Enabled: false
+Lint/Void:
   Enabled: false
 Style/HashEachMethods:
   Enabled: false

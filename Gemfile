@@ -36,7 +36,7 @@ gem 'jwt'
 gem 'omniauth-google-oauth2'
 gem "pundit"
 gem 'rack-cors'
-gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+gem 'rspec-rails'
 gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
