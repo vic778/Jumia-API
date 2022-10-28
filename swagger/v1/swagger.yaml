@@ -535,8 +535,6 @@ paths:
       - Users
       parameters: []
       responses:
-        '201':
-          description: user created
         '422':
           description: invalid request
       requestBody:
@@ -570,8 +568,6 @@ paths:
       - Users
       parameters: []
       responses:
-        '200':
-          description: user logged in
         '422':
           description: invalid request
       requestBody:
@@ -593,7 +589,7 @@ paths:
               required:
               - user
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: jummia.herokuapp.com
+      default: localhost:3000
