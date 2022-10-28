@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/drawers', type: :request do
+RSpec.xdescribe 'api/drawers', type: :request do
   context 'when as an admin' do
     let!(:user) { create(:user, :admin) }
 

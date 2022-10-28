@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/posts', type: :request do
+RSpec.xdescribe 'api/posts', type: :request do
   context "when as a user" do
     path '/api/posts' do
       get 'Retrieves all posts' do
